@@ -1,0 +1,44 @@
+name: Restructure Repository
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: '0 0 * * *'  # Runs daily at midnight UTC
+
+jobs:
+  restructure:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Create Directory Structure
+        run: |
+          # Create directories if they don't exist
+          mkdir -p code/prototypes
+          mkdir -p whitepaper/figures
+          mkdir -p docs
+          mkdir -p contributions
+
+          # (Optional) Move any stray .tex files from the root to whitepaper/
+          if ls *.tex 1> /dev/null 2>&1; then
+              mv *.tex whitepaper/ || true
+          fi
+
+          # List the directory structure for logging
+          echo "Directory structure:"
+          ls -R
+
+      - name: Commit and Push Changes
+        env:
+          PAT: ${{ secrets.PAT }}
+        run: |
+          git config --global user.email "automation@bridgit.net"
+          git config --global user.name "BRiidGIT Bot"
+          git add .
+          # Commit changes only if there are differences
+          git diff-index --quiet HEAD || git commit -m "Automated: Updated repository directory structure"
+          # Push changes using the PAT for authentication
+          git push https://$PAT@github.com/nuzer05ive/BRiidGIT.ai.git HEAD:main || echo "No changes to push."
