@@ -24,7 +24,7 @@ jobs:
 
           # (Optional) Move any stray .tex files from the root to whitepaper/
           if ls *.tex 1> /dev/null 2>&1; then
-              mv *.tex whitepaper/ || true
+              mv *.tex whitepaper/ u|| true
           fi
 
           # Log the directory structure for debugging purposes
@@ -35,7 +35,7 @@ jobs:
         env:
           PAT: ${{ secrets.PAT1 }}
         run: |
-          git config --global user.email "automation@bBRiidGiT.ai.git"
+          git config --global user.email "automation@BRiidGiT.ai.git"
           git config --global user.name "BRiidGIT.ai"
           git add .
           # Commit changes only if there are differences
