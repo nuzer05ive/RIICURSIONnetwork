@@ -5,7 +5,7 @@ on:
     branches:
       - main
   schedule:
-    - cron: '0 0 * * *'  # Runs daily at midnight UTC
+    - cron: '30 0 * * *'  # Runs daily at midnight thirty UTC
 
 jobs:
   restructure:
@@ -16,7 +16,7 @@ jobs:
 
       - name: Create Directory Structure
         run: |
-          # Create directories if they don't exist
+          # Create required directories if they don't already exist
           mkdir -p code/prototypes
           mkdir -p whitepaper/figures
           mkdir -p docs
@@ -27,7 +27,7 @@ jobs:
               mv *.tex whitepaper/ || true
           fi
 
-          # List the directory structure for logging
+          # Log the directory structure for debugging purposes
           echo "Directory structure:"
           ls -R
 
@@ -35,10 +35,10 @@ jobs:
         env:
           PAT: ${{ secrets.PAT1 }}
         run: |
-          git config --global user.email "automation@bridgit.net"
-          git config --global user.name "BRiidGIT Bot"
+          git config --global user.email "automation@briidgit.ai"
+          git config --global user.name "BRiidGIT.ai"
           git add .
           # Commit changes only if there are differences
           git diff-index --quiet HEAD || git commit -m "Automated: Updated repository directory structure"
           # Push changes using the PAT for authentication
-          git push https://$PAT@github.com/nuzer05ive/BRiidGIT.ai.git HEAD:main || echo "No changes to push."
+          git push https://$PAT@github.com/nuzer05ive/briidgit-ai-automation.git HEAD:main || echo "No changes to push."
