@@ -33,7 +33,7 @@ jobs:
 
       - name: Commit and Push Changes
         env:
-          PAT: ${{ secrets.PAT }}
+          PAT: ${{ secrets.PAT1 }}
         run: |
           git config --global user.email "automation@bridgit.net"
           git config --global user.name "BRiidGIT Bot"
