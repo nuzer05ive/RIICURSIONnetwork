@@ -35,7 +35,7 @@ jobs:
         env:
           PAT: ${{ secrets.PAT1 }}
         run: |
-          git config --global user.email "automation@briidgit.ai"
+          git config --global user.email "automation@bBRiidGiT.ai.git"
           git config --global user.name "BRiidGIT.ai"
           git add .
           # Commit changes only if there are differences
