@@ -41,4 +41,4 @@ jobs:
           # Commit changes only if there are differences
           git diff-index --quiet HEAD || git commit -m "Automated: Updated repository directory structure"
           # Push changes using the PAT for authentication
-          git push https://$PAT@github.com/nuzer05ive/briidgit-ai.git HEAD:main || echo "No changes to push."
+          git push https://$PAT@github.com/nuzer05ive/BRiidGiT.ai.git HEAD:main || echo "No changes to push."
