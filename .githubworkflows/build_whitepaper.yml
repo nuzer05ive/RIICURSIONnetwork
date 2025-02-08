@@ -1,0 +1,37 @@
+name: Build Whitepaper
+
+on:
+  push:
+    branches:
+      - main
+      - whitepaper
+  pull_request:
+    branches:
+      - main
+      - whitepaper
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Install TeX Live
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive-full
+
+      - name: Compile Whitepaper
+        working-directory: whitepaper
+        run: |
+          pdflatex -interaction=nonstopmode main.tex
+          bibtex main
+          pdflatex -interaction=nonstopmode main.tex
+          pdflatex -interaction=nonstopmode main.tex
+
+      - name: Upload PDF Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: whitepaper-pdf
+          path: whitepaper/main.pdf
