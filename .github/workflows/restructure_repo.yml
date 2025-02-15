@@ -17,18 +17,19 @@ jobs:
       - name: Create Directory Structure
         run: |
           # Create required directories if they don't already exist
-          mkdir -p code/prototypes
+          mkdir -p code/Python
+          mkdir -p code/LaTeX
           mkdir -p whitepaper/figures
           mkdir -p docs
           mkdir -p contributions
 
-          # (Optional) Move any stray .tex files from the root to whitepaper/
+          # Move stray .tex files from root to whitepaper/
           if ls *.tex 1> /dev/null 2>&1; then
-              mv *.tex whitepaper/ u|| true
+              mv *.tex whitepaper/ || true
           fi
 
           # Log the directory structure for debugging purposes
-          echo "Directory structure:"
+          echo "Updated Directory Structure:"
           ls -R
 
       - name: Commit and Push Changes
@@ -38,7 +39,5 @@ jobs:
           git config --global user.email "automation@BRiidGiT.ai.git"
           git config --global user.name "BRiidGIT.ai"
           git add .
-          # Commit changes only if there are differences
           git diff-index --quiet HEAD || git commit -m "Automated: Updated repository directory structure"
-          # Push changes using the PAT for authentication
           git push https://$PAT@github.com/nuzer05ive/BRiidGiT.ai.git HEAD:main || echo "No changes to push."
