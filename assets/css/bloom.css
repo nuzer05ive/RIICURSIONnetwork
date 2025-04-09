@@ -1,3 +1,34 @@
-# 🎨 Viewer styles
-# File: assets/css/bloom.css
-# Timestamp: 2025-04-09T13:43Z
+body {
+  background: #0e0e1a;
+  color: #f1f1f1;
+  font-family: "Courier New", monospace;
+  margin: 0;
+  padding: 2rem;
+}
+
+.bloom-container {
+  text-align: center;
+  max-width: 700px;
+  margin: auto;
+  background: rgba(255, 255, 255, 0.02);
+  padding: 2rem;
+  border-radius: 1rem;
+  border: 1px solid #444;
+}
+
+.sigil-spin img {
+  width: 150px;
+  animation: spin 8s linear infinite;
+  margin: 1rem 0;
+}
+
+blockquote {
+  font-style: italic;
+  color: #b7e5ff;
+  margin-top: 1rem;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

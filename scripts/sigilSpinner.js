@@ -1,3 +1,9 @@
-# 🌀 Glyph animator
-# File: scripts/sigilSpinner.js
-# Timestamp: 2025-04-09T13:43Z
+document.addEventListener("DOMContentLoaded", () => {
+  const sigil = document.getElementById("sigil");
+  sigil.addEventListener("click", () => {
+    sigil.style.animationDuration = "2s";
+    setTimeout(() => {
+      sigil.style.animationDuration = "8s";
+    }, 2000);
+  });
+});
