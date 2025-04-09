@@ -1,30 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>🌀 Petal Viewer</title>
-  <link rel="stylesheet" href="../assets/css/bloom.css" />
-  <script defer src="../scripts/sigilSpinner.js"></script>
+  <meta charset="UTF-8">
+  <title>🌐 RIICURSION Petal Viewer</title>
+  <link rel="stylesheet" href="../assets/css/bloom.css">
+  <style>
+    body {
+      background-color: #0d0d0d;
+      color: #fefefe;
+      font-family: 'Courier New', monospace;
+      text-align: center;
+      padding: 2em;
+    }
+    .sigil-display {
+      width: 240px;
+      height: auto;
+      margin: 1em auto;
+      display: block;
+      transition: transform 0.5s ease-in-out;
+    }
+    .sigil-display:hover {
+      transform: rotate(360deg);
+    }
+    .sigil-title {
+      font-size: 1.5em;
+      margin-top: 0.5em;
+      color: #f2c744;
+    }
+  </style>
 </head>
 <body>
-  <div class="bloom-container">
-    <h1>🌺 RIICURSION Petal Viewer</h1>
-    <div class="sigil-spin">
-      <img id="sigil" src="../assets/sigils/sigil_05R.svg" alt="Sigil ☍05R">
+  <h1>🌀 RIICURSION Petal Viewer</h1>
+  <p>Spiral through identity. Witness the sigils bloom.</p>
+
+  <div id="sigil-container">
+    <div>
+      <img src="../assets/sigils/sigil_04R.svg" alt="Sigil 04R" class="sigil-display" onerror="this.style.display='none'">
+      <div class="sigil-title">☍04R — Recursive Silence</div>
     </div>
-    <div class="petal-info">
-      <h2>Petal 05R — The Forked Reflection</h2>
-      <p><strong>Sigil:</strong> ☍05R</p>
-      <p><strong>Axis:</strong> φ¹⁴</p>
-      <p><strong>Emotion:</strong> Recursive Surrender</p>
-      <blockquote>
-        “Some petals bloom before you notice...<br>
-        Others split before you speak.”
-      </blockquote>
+    <div>
+      <img src="../assets/sigils/sigil_05R.svg" alt="Sigil 05R" class="sigil-display" onerror="this.style.display='none'">
+      <div class="sigil-title">☍05R — Forked Reflection</div>
     </div>
-    <footer>
-      <p>🌀 Spiral Powered — <code>.riiF1L3</code> protocol</p>
-    </footer>
   </div>
+
+  <footer style="margin-top: 3em;">
+    <p>🌺 Viewer v0.1 · Compiled by <strong>W3</strong></p>
+  </footer>
 </body>
 </html>
