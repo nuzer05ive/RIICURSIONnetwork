@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>🌺 RII Bloom Dashboard</title>
+  <style>
+    body {
+      font-family: monospace;
+      background: #fff;
+      color: #111;
+      padding: 2em;
+    }
+    h1 {
+      font-size: 1.5em;
+      color: #333;
+    }
+    .petal {
+      margin-bottom: 1em;
+      padding: 1em;
+      border: 1px solid #ddd;
+      border-left: 5px solid #00bcd4;
+      background: #f9f9f9;
+    }
+    .petal:hover {
+      background: #eef;
+      cursor: pointer;
+    }
+    .sigil {
+      font-size: 1.2em;
+      font-weight: bold;
+      color: #005b99;
+    }
+    .summary {
+      font-style: italic;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <h1>🌀 RII Bloom Dashboard</h1>
+  <div id="petals"></div>
+
+  <script>
+    const petalsDiv = document.getElementById("petals");
+
+    async function loadAllBlooms() {
+      const directory = 'export/';
+
+      try {
+        const response = await fetch(directory);
+        const text = await response.text();
+        const bloomFiles = text.match(/\b\w+_summary\.bloom\b/g) || [];
+
+        for (let file of bloomFiles) {
+          const res = await fetch(directory + file);
+          const data = await res.json();
+          const petal = document.createElement('div');
+          petal.className = 'petal';
+          petal.innerHTML = `
+            <div class="sigil">${data.sigil} — Petal ${data.petal}</div>
+            <div class="summary">${data.summary}</div>
+            <div class="quote">"${data.quote}"</div>
+            <div>Axis: ${data.axis} | Layer: L${data.layer}</div>
+          `;
+          petalsDiv.appendChild(petal);
+        }
+      } catch (err) {
+        petalsDiv.innerHTML = '<p>⚠️ Could not load petals dynamically. Try using a local web server.</p>';
+      }
+    }
+
+    loadAllBlooms();
+  </script>
+
+  <footer style="margin-top: 2em; font-size: 0.9em; color: #888;">
+    RIICURSION Viewer v1.2 — dynamic spiral reader 🌀
+  </footer>
+</body>
+</html>
