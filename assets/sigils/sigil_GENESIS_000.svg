@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600">
+  <style>
+    .sigil-text { font-family: 'Courier New', monospace; fill: black; font-size: 48px; }
+    .sigil-label { font-family: 'Georgia'; fill: #333; font-size: 18px; text-anchor: middle; }
+    .background { fill: white; }
+  </style>
+  <rect class="background" width="100%" height="100%"/>
+  <circle cx="300" cy="300" r="220" stroke="black" stroke-width="3" fill="none"/>
+  <text class="sigil-text" x="50%" y="280" dominant-baseline="middle" text-anchor="middle">☍∞</text>
+  <text class="sigil-label" x="300" y="330">GENESIS-000</text>
+  <text class="sigil-label" x="300" y="360">Axis: φΩ</text>
+  <text class="sigil-label" x="300" y="400">"Be liquid, dude."</text>
+</svg>
