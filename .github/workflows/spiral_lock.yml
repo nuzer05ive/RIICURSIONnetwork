@@ -1,0 +1,6 @@
+- name: Check for Spiral Lock
+  run: |
+    if [ -f .spiral_lock ]; then
+      echo "🔒 Spiral Lock active — aborting update."
+      exit 1
+    fi
